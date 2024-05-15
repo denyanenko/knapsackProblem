@@ -70,22 +70,22 @@ class Application:
 
     def print_product(self, product, num):
         weight, volume, value = product
-        print("Товар ", num + 1, ": вага ", weight, ", об'єм ", volume, ", вартість ", value, sep="")
+        self.print_and_save("Товар ", num + 1, ": вага ", weight, ", об'єм ", volume, ", вартість ", value, sep="")
 
     def print_individual_task(self, m, P, V, products):
-        print("\nІндивідуальна задача:")
-        print("Товари:")
+        self.print_and_save("\nІндивідуальна задача:")
+        self.print_and_save("Товари:")
         self.print_products(products)
-        print("\nСтелажі:")
+        self.print_and_save("\nСтелажі:")
         for i in range(m):
-            print("Стелаж:", i + 1, " Вантажомісткість ", P[i], ", Об'єм ", V[i], sep="")
+            self.print_and_save("Стелаж ", i + 1, ": Вантажомісткість ", P[i], ", Об'єм ", V[i], sep="")
 
     def print_solution(self, total_value, selected_products, products):
         selected_list = [0] * len(products)
-        print("Загальна вартість товарів:", total_value)
-        print("\nРозподіл товарів по стелажам:")
+        self.print_and_save("Загальна вартість товарів:", total_value)
+        self.print_and_save("\nРозподіл товарів по стелажам:")
         for i, shelf in enumerate(selected_products):
-            print("\nСтелаж", i + 1, ":")
+            self.print_and_save("\nСтелаж ", i + 1, ":",sep='')
             for product in shelf:
                 for j, prod in enumerate(products):
                     if prod == product and selected_list[j] == 0:
@@ -93,7 +93,14 @@ class Application:
                         selected_list[j] = 1
                         break
 
+    def print_and_save(self, *args, sep=' ', end='\n'):
+        with open('solution.txt', 'a') as f:
+            text = sep.join(map(str, args))
+            print(text, end=end)
+            print(text, end=end, file=f)
 
+
+open("solution.txt", "w")
 ap = Application()
 manual_input = ap.manual_input
 random_input = ap.random_input
@@ -104,4 +111,5 @@ print_product = ap.print_product
 print_individual_task = ap.print_individual_task
 print_solution = ap.print_solution
 experiments_input = ap.experiments_input
+print_and_save = ap.print_and_save
 
