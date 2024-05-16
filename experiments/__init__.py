@@ -1,0 +1,3 @@
+from experiments.dimension_experiments import dimension_experiments
+from experiments.iterations_count_experiments import iterations_count_experiments
+from experiments.population_size_experiments import population_size_experiments

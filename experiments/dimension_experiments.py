@@ -1,11 +1,11 @@
 from greedy_algorithm.GreedyAlgorithm import GreedyAlgorithm
 from probabilistic_algorithm.ProbabilisticAlgorithm import ProbabilisticAlgorithm
 from genetic_algorithm.GeneticAlgorithm import GeneticAlgorithm
-from application.Application import experiments_input
+from application.Application import experiments_input, print_and_save
 import time
 
 
-def run_experiments():
+def dimension_experiments():
     for n in range(10, 101, 10):
         greedy_times = []
         greedy_values = []
@@ -42,16 +42,16 @@ def run_experiments():
         ga_avg_time = sum(ga_times) / len(ga_times)
         ga_avg_value = sum(ga_values) / len(ga_values)
 
-        print(f"Для {n} товарів:")
-        print(f"ЖАДІБНИЙ АЛГОРИТМ - Сердній час роботи: {greedy_avg_time}, Середнє значення ЦФ: {greedy_avg_value}")
+        print_and_save(f"Для {n} товарів:")
+        print_and_save(f"ЖАДІБНИЙ АЛГОРИТМ - Середній час роботи: {greedy_avg_time}, Середнє значення ЦФ: {greedy_avg_value}")
 
-        print(f"ЙМОВІРНІСНИМ АЛГОРИТМОМ - Сердній час роботи: {probabilistic_avg_time}, Середнє значення ЦФ: {probabilistic_avg_value}")
+        print_and_save(f"ЙМОВІРНІСНИМ АЛГОРИТМОМ - Середній час роботи: {probabilistic_avg_time}, Середнє значення ЦФ: {probabilistic_avg_value}")
 
-        print(f"ГЕНЕТИЧНИЙ АЛГОРИТМ - Сердній час роботи: {ga_avg_time}, Середнє значення ЦФ: {ga_avg_value}")
+        print_and_save(f"ГЕНЕТИЧНИЙ АЛГОРИТМ - Середній час роботи: {ga_avg_time}, Середнє значення ЦФ: {ga_avg_value}\n")
 
 
 def main():
-    run_experiments()
+    dimension_experiments()
 
 
 if __name__ == "__main__":

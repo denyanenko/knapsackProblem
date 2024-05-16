@@ -23,8 +23,7 @@ class Application:
                     range(n)]  # Випадкові товари
         return n, m, P, V, products
 
-
-    def experiments_input(self,n):
+    def experiments_input(self, n):
         m = 4
         P = [(round(uniform(5 * n / 1.1 ** m, 15 * n / 1.1 ** m), 1)) for _ in range(m)]
         V = [(round(uniform(0.5 * n / 1.1 ** m, 1.5 * n / 1.1 ** m), 1)) for _ in range(m)]
@@ -54,7 +53,7 @@ class Application:
         }
 
         while True:
-            print("Оберіть метод введення даних:")
+            print("\nОберіть метод введення даних:")
             print("1. Введення вручну")
             print("2. Випадкове генерування")
             print("3. Зчитування з файлу")
@@ -63,6 +62,7 @@ class Application:
                 return input_methods[int(choice)]
             else:
                 print("Невірний вибір. Будь ласка, введіть 1, 2 або 3.")
+
 
     def print_products(self, products):
         for i, product in enumerate(products):
@@ -85,7 +85,7 @@ class Application:
         self.print_and_save("Загальна вартість товарів:", total_value)
         self.print_and_save("\nРозподіл товарів по стелажам:")
         for i, shelf in enumerate(selected_products):
-            self.print_and_save("\nСтелаж ", i + 1, ":",sep='')
+            self.print_and_save("\nСтелаж ", i + 1, ":", sep='')
             for product in shelf:
                 for j, prod in enumerate(products):
                     if prod == product and selected_list[j] == 0:
@@ -94,13 +94,13 @@ class Application:
                         break
 
     def print_and_save(self, *args, sep=' ', end='\n'):
-        with open('solution.txt', 'a') as f:
+        with open('output.txt', 'a') as f:
             text = sep.join(map(str, args))
             print(text, end=end)
             print(text, end=end, file=f)
 
 
-open("solution.txt", "w")
+open("output.txt", "w")
 ap = Application()
 manual_input = ap.manual_input
 random_input = ap.random_input
@@ -112,4 +112,3 @@ print_individual_task = ap.print_individual_task
 print_solution = ap.print_solution
 experiments_input = ap.experiments_input
 print_and_save = ap.print_and_save
-
