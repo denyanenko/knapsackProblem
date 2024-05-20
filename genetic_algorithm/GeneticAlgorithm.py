@@ -41,7 +41,7 @@ class GeneticAlgorithm:
         return offsprings
 
     def next_generation(self, m, products):
-        n_selection = int(self.population_size * 0.4 / 2) * 2
+        n_selection = int(self.population_size * 0.4)
         offsprings = []
 
         for _ in range(n_selection):
