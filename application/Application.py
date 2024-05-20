@@ -63,7 +63,6 @@ class Application:
             else:
                 print("Невірний вибір. Будь ласка, введіть 1, 2 або 3.")
 
-
     def print_products(self, products):
         for i, product in enumerate(products):
             self.print_product(product, i)

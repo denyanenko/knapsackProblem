@@ -1,5 +1,6 @@
 from application.Application import experiments_input, print_and_save
 from genetic_algorithm.GeneticAlgorithm import GeneticAlgorithm
+import matplotlib.pyplot as plt
 
 
 def population_size_experiments():
@@ -15,6 +16,18 @@ def population_size_experiments():
     avgs = [total / count_experiments for total in totals]
     for i, avg in enumerate(avgs):
         print_and_save(f"Розмір популяції {sizes[i]} - середнє значення {avg}")
+        # Побудова графіка
+        plt.figure(figsize=(10, 6))
+        plt.plot(sizes, avgs, marker='o', linestyle='-', color='b')
+
+        # Додавання підписів та заголовка
+        plt.title('Залежність середнього значення від розміру популяції')
+        plt.xlabel('Кількість ітерацій')
+        plt.ylabel('Розмір популяції')
+        plt.grid(True)
+
+        # Показати графік
+        plt.show()
 
 
 def main():
