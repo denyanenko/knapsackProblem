@@ -21,9 +21,9 @@ def population_size_experiments():
         plt.plot(sizes, avgs, marker='o', linestyle='-', color='b')
 
         # Додавання підписів та заголовка
-        plt.title('Залежність середнього значення від розміру популяції')
-        plt.xlabel('Кількість ітерацій')
-        plt.ylabel('Розмір популяції')
+        plt.title('Залежність середнього значення цф від розміру популяції')
+        plt.xlabel('Розмір популяції')
+        plt.ylabel('Середнє значення цф')
         plt.grid(True)
 
         # Показати графік
